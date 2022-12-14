@@ -31,24 +31,20 @@ for l in grid:
 
 # start dropping sand
 grid[sand_start[1]][sand_start[0]] = '+'
-try:
+while True:
+    # drop sand
+    sand = sand_start
     while True:
-        # drop sand
-        sand = sand_start
-        while True:
-            if grid[sand[1]+1][sand[0]] == '.':
-                sand = (sand[0], sand[1]+1)
-            elif grid[sand[1]+1][sand[0]-1] == '.':
-                sand = (sand[0]-1, sand[1]+1)
-            elif grid[sand[1]+1][sand[0]+1] == '.':
-                sand = (sand[0]+1, sand[1]+1)
-            else:
-                grid[sand[1]][sand[0]] = 'o'
-                break
-        if sand[1] == sand_start[1] and sand[0] == sand_start[0]:
+        if grid[sand[1]+1][sand[0]] == '.':
+            sand = (sand[0], sand[1]+1)
+        elif grid[sand[1]+1][sand[0]-1] == '.':
+            sand = (sand[0]-1, sand[1]+1)
+        elif grid[sand[1]+1][sand[0]+1] == '.':
+            sand = (sand[0]+1, sand[1]+1)
+        else:
+            grid[sand[1]][sand[0]] = 'o'
             break
-except:
-    for row in grid:
-        print(''.join(row))
+    if sand[1] == sand_start[1] and sand[0] == sand_start[0]:
+        break
 
 print(sum(sum(1 for x in row if x == 'o') for row in grid))
