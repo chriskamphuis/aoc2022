@@ -26,9 +26,6 @@ for line in lines:
 
 grid[-1] = ['#' for _ in range(max_x+2)]
 
-for l in grid:
-    print(''.join(l))
-
 # start dropping sand
 grid[sand_start[1]][sand_start[0]] = '+'
 while True:
